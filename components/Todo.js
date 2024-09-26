@@ -12,9 +12,21 @@ class Todo {
       this._todoElement.remove();
     });
 
-    this._todoCheckboxEl.addEventListner("change", () => {
+    this._todoCheckboxEl.addEventListener("change", () => {
       this._data.completed = !this._data.completed;
     });
+  }
+
+  _generateDueDate() {
+    this.dueDate = new Date(this._date);
+    this.todoDate = this._todoElement.querySelector(".todo__date");
+    if (!isNaN(this.dueDate)) {
+      this.todoDate.textContent = `Due: ${this.dueDate.toLocaleString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      })}`;
+    }
   }
 
   _generateCheckBoxEl() {
@@ -37,6 +49,8 @@ class Todo {
     todoNameEl.textContent = this._data.name;
 
     this._generateCheckBoxEl();
+    this._setEventListeners();
+    this._generateDueDate();
 
     return this._todoElement;
   }
