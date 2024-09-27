@@ -18,7 +18,7 @@ class Todo {
   }
 
   _generateDueDate() {
-    this.dueDate = new Date(this._date);
+    this.dueDate = new Date(this._data.date);
     this.todoDate = this._todoElement.querySelector(".todo__date");
     if (!isNaN(this.dueDate)) {
       this.todoDate.textContent = `Due: ${this.dueDate.toLocaleString("en-US", {
