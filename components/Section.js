@@ -6,8 +6,8 @@ class Section {
   }
 
   renderItems() {
-    this._items.array.forEach((item) => {
-      this._renderer(item);
+    this._items.forEach((item) => {
+      this._renderer(item); // Call the renderer for each item
     });
   }
 
